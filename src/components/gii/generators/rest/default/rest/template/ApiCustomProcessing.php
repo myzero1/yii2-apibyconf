@@ -108,6 +108,7 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
      */
     public function handling($completedData)
     {
+        // for cud
         $model = ApiHelper::findModel('\myzero1\apibyconf\example\models\User', $completedData['id']);
         
         $model->load($completedData, '');
@@ -134,6 +135,7 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
         }
 
     /*
+        // for index
         $result = [];
 
         $query = (new Query())
@@ -176,6 +178,7 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
     */
         
     /*
+        // for export
         $completedData['page_size'] = ApiHelper::EXPORT_PAGE_SIZE;
         $completedData['page'] = ApiHelper::EXPORT_PAGE;
 
