@@ -133,7 +133,7 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
             ApiHelper::throwError('Unknown error.', __FILE__, __LINE__);
         }
 
-        /*
+    /*
         $result = [];
 
         $query = (new Query())
@@ -173,9 +173,9 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
         $result['items'] = $items;
 
         return $result;
-        */
+    */
         
-        /*
+    /*
         $completedData['page_size'] = ApiHelper::EXPORT_PAGE_SIZE;
         $completedData['page'] = ApiHelper::EXPORT_PAGE;
 
@@ -186,7 +186,6 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
             'dataProvider' => new \yii\data\ArrayDataProvider([
                 'allModels' => $items['data']['items'],
             ]),
-            /*
             'columns' => [
                 [
                     'attribute' => 'name',
@@ -199,7 +198,6 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
                     }
                 ],
             ],
-            */
         ];
 
         $name = sprintf('export-%s', time());
@@ -210,7 +208,7 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
         return [
             'url' => Yii::$app->urlManager->createAbsoluteUrl([sprintf('/%s.xls', $name)])
         ];
-        */
+    */
     }
 
     /**
