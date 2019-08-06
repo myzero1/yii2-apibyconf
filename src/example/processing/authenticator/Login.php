@@ -112,7 +112,7 @@ class Login implements ApiActionProcessing
             $flag = true;
             if (!($flag = $model->save())) {
                 $trans->rollBack();
-                return ApiHelper::getModelError($model, ApiCodeMsg::DB_BAD_REQUEST);
+                return ApiHelper::getModelError($model, ApiCodeMsg::DB_VALIDATION_FAILED);
             }
 
             if ($flag) {
