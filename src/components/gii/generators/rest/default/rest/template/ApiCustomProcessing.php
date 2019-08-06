@@ -108,7 +108,7 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
      */
     public function handling($completedData)
     {
-        // for cud
+    // for cud
         $model = ApiHelper::findModel('\myzero1\apibyconf\example\models\User', $completedData['id']);
         
         $model->load($completedData, '');
