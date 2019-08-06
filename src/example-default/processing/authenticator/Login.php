@@ -94,7 +94,7 @@ class Login implements ApiActionProcessing
         $moreValidate->load($input, '');
 
         if (!$moreValidate->validate()) {
-            return ApiHelper::getModelError($moreValidate, ApiCodeMsg::BAD_REQUEST);
+            return ApiHelper::getModelError($moreValidate, ApiCodeMsg::INPUT_VALIDATION_FAILED);
         }
         return $input;
     }

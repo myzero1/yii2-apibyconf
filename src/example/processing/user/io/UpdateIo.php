@@ -54,7 +54,7 @@ class UpdateIo implements ApiIoProcessing
         $modelGet->load($input['get'], '');
 
         if (!$modelGet->validate()) {
-            return ApiHelper::getModelError($modelGet, ApiCodeMsg::BAD_REQUEST);
+            return ApiHelper::getModelError($modelGet, ApiCodeMsg::INPUT_VALIDATION_FAILED);
         }
 
         // post
@@ -73,7 +73,7 @@ class UpdateIo implements ApiIoProcessing
         $modelPost->load($input['post'], '');
 
         if (!$modelPost->validate()) {
-            return ApiHelper::getModelError($modelPost, ApiCodeMsg::BAD_REQUEST);
+            return ApiHelper::getModelError($modelPost, ApiCodeMsg::INPUT_VALIDATION_FAILED);
         }
 
         $getAttributes = Helper::inputFilter($modelGet->attributes);
