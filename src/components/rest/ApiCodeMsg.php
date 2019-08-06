@@ -46,20 +46,27 @@ class ApiCodeMsg
     const INDEX_SERVER_ERROR = 554;
     const INDEX_SERVER_ERROR_MSG = '搜索时服务器端错误';
 
-    const OK = 735200;
-    const OK_MSG = 'OK';
     const BAD_REQUEST = 735400;
     const BAD_REQUEST_MSG = 'Bad Request';
     const UNAUTHORIZED = 735401;
     const UNAUTHORIZED_MSG = 'Unauthorized';
+    const DB_BAD_REQUEST= 735440;
+    const DB_BAD_REQUEST_MSG = 'Database storage validation error';
+
+    const OK = 735200;
+    const OK_MSG = 'OK';
     const FORBIDDEN = 735403;
     const FORBIDDEN_MSG = 'Forbidden';
     const NOT_FOUND = 735404;
     const NOT_FOUND_MSG = 'Not Found';
+    const INPUT_VALIDATION_FAILED = 735441;
+    const INPUT_VALIDATION_FAILED_MSG = 'Input validation failed';
+    const DB_VALIDATION_FAILED = 735451;
+    const DB_VALIDATION_FAILED_MSG = 'Database validation failed';
+    const INPUT_LOGIC_VALIDATION_FAILED = 735452;
+    const INPUT_LOGIC_VALIDATION_FAILED_MSG = 'Input logic validation failed';
     const INTERNAL_SERVER = 735500;
     const INTERNAL_SERVER_MSG = 'Internal Server Error';
     const UNKNOWN_ERROR= 735735;
     const UNKNOWN_ERROR_MSG = 'Unknown';
-    const DB_BAD_REQUEST= 735440;
-    const DB_BAD_REQUEST_MSG = 'Database storage validation error';
 }
