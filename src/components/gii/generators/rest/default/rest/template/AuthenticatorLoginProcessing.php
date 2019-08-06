@@ -111,6 +111,22 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
     {
         $model = ApiAuthenticator::findByUsername($completedData['username']);
 
+        if (is_null($model)) {
+            return $result = [
+                'code' => ApiCodeMsg::NOT_FOUND,
+                'msg' => ApiCodeMsg::NOT_FOUND_MSG,
+                'data' => new \StdClass(),
+            ];
+        }
+
+        if ( !Yii::$app->security->validatePassword($completedData['password'], $model->password_hash) ) {
+            return $result = [
+                'code' => ApiCodeMsg::INPUT_LOGIC_VALIDATION_FAILED_MSG,
+                'msg' => 'Error in username or password',
+                'data' => new \StdClass(),
+            ];
+        }
+
         if (!ApiAuthenticator::apiTokenIsValid($model->api_token)) {
             $model->generateApiToken();
         }
