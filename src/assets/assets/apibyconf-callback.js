@@ -86,7 +86,7 @@ var onCreateMenu = function onCreateMenu(items, node) {
     var auto = new Array();
 
     for (var i = 0;  i < items.length; i++) {
-        console.log(items);
+        // console.log(items);
         var text = items[i]['text'];
         if (text=='追加') {
             for (var j = items[i]['submenu'].length - 1; j >= 0; j--) {
