@@ -63,10 +63,19 @@ window.jsoneditorOldJson = {
                         "query_params": {}
                     },
                     "outputs": {
-                        "code": 200,
-                        "msg": "msg",
-                        "data": {
-                            "username": "myzero1"
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "username": "myzero1"
+                            }
+                        },
+                        '735401': {
+                            "code": 735401,
+                            "msg": "Unauthorized",
+                            "data": {
+                                "username": "myzero1"
+                            }
                         }
                     }
                 },
