@@ -67,14 +67,56 @@ window.jsoneditorOldJson = {
                             "code": 735200,
                             "msg": "ok",
                             "data": {
-                                "username": "myzero1"
+                                "dataTitle": "dataValue"
                             }
                         },
-                        '735401': {
-                            "code": 735401,
-                            "msg": "Unauthorized",
+                        '735403': {
+                            "code": 735403,
+                            "msg": "Forbidden",
                             "data": {
-                                "username": "myzero1"
+                                "dataTitle": "dataValue"
+                            }
+                        },
+                        '735404': {
+                            "code": 735404,
+                            "msg": "Not Found",
+                            "data": {
+                                "dataTitle": "dataValue"
+                            }
+                        },
+                        '735441': {
+                            "code": 735441,
+                            "msg": "Input validation failed",
+                            "data": {
+                                "dataTitle": "dataValue"
+                            }
+                        },
+                        '735451': {
+                            "code": 735451,
+                            "msg": "Database validation failed",
+                            "data": {
+                                "dataTitle": "dataValue"
+                            }
+                        },
+                        '735452': {
+                            "code": 735452,
+                            "msg": "Input logic validation failed",
+                            "data": {
+                                "dataTitle": "dataValue"
+                            }
+                        },
+                        '735500': {
+                            "code": 735500,
+                            "msg": "Internal Server Error",
+                            "data": {
+                                "dataTitle": "dataValue"
+                            }
+                        },
+                        '735735': {
+                            "code": 735735,
+                            "msg": "Unknown",
+                            "data": {
+                                "dataTitle": "dataValue"
                             }
                         }
                     }
@@ -105,11 +147,13 @@ window.jsoneditorOldJson = {
                         "query_params": {}
                     },
                     "outputs": {
-                        "code": 200,
-                        "msg": "msg",
-                        "data": {
-                            "username": "myzero1",
-                            "api_token": "123456dsfe5w"
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "username": "myzero1",
+                                "api_token": "123456dsfe5w"
+                            }
                         }
                     }
                 }
@@ -151,13 +195,15 @@ window.jsoneditorOldJson = {
                         "query_params": {}
                     },
                     "outputs": {
-                        "code": 200,
-                        "msg": "msg",
-                        "data": {
-                            "username": "myzero1",
-                            "status": 1,
-                            "created_at": "2019-04-28 11:11:11",
-                            "updated_at": "2019-04-28 11:11:11"
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "username": "myzero1",
+                                "status": 1,
+                                "created_at": "2019-04-28 11:11:11",
+                                "updated_at": "2019-04-28 11:11:11"
+                            }
                         }
                     }
                 },
@@ -202,13 +248,15 @@ window.jsoneditorOldJson = {
                         "query_params": {}
                     },
                     "outputs": {
-                        "code": 200,
-                        "msg": "msg",
-                        "data": {
-                            "username": "myzero1",
-                            "status": 1,
-                            "created_at": "2019-04-28 11:11:11",
-                            "updated_at": "2019-04-28 11:11:11"
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "username": "myzero1",
+                                "status": 1,
+                                "created_at": "2019-04-28 11:11:11",
+                                "updated_at": "2019-04-28 11:11:11"
+                            }
                         }
                     }
                 },
@@ -231,14 +279,16 @@ window.jsoneditorOldJson = {
                         "query_params": {}
                     },
                     "outputs": {
-                        "code": 200,
-                        "msg": "msg",
-                        "data": {
-                            "username": "myzero1",
-                            "status": 1,
-                            "api_token": "eHiFYAsL5DMkAiwK-iUJZEon-u42qhpH_1557385911",
-                            "created_at": "2019-04-28 11:11:11",
-                            "updated_at": "2019-04-28 11:11:11"
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "username": "myzero1",
+                                "status": 1,
+                                "api_token": "eHiFYAsL5DMkAiwK-iUJZEon-u42qhpH_1557385911",
+                                "created_at": "2019-04-28 11:11:11",
+                                "updated_at": "2019-04-28 11:11:11"
+                            }
                         }
                     }
                 },
@@ -261,10 +311,12 @@ window.jsoneditorOldJson = {
                         "query_params": {}
                     },
                     "outputs": {
-                        "code": 200,
-                        "msg": "msg",
-                        "data": {
-                            "id": 1
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "id": 1
+                            }
                         }
                     }
                 },
@@ -287,19 +339,21 @@ window.jsoneditorOldJson = {
                         }
                     },
                     "outputs": {
-                        "code": 200,
-                        "msg": "msg",
-                        "data": {
-                            "total": 9,
-                            "page": 1,
-                            "page_size": 20,
-                            "items": [{
-                                "id": 1,
-                                "username": "myzero1",
-                                "status": 1,
-                                "created_at": "2019-04-28 11:11:11",
-                                "updated_at": "2019-04-28 11:11:11"
-                            }]
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "total": 9,
+                                "page": 1,
+                                "page_size": 20,
+                                "items": [{
+                                    "id": 1,
+                                    "username": "myzero1",
+                                    "status": 1,
+                                    "created_at": "2019-04-28 11:11:11",
+                                    "updated_at": "2019-04-28 11:11:11"
+                                }]
+                            }
                         }
                     }
                 },
@@ -322,10 +376,12 @@ window.jsoneditorOldJson = {
                         }
                     },
                     "outputs": {
-                        "code": 200,
-                        "msg": "msg",
-                        "data": {
-                            "url": "/export.xsl"
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "url": "/export.xsl"
+                            }
                         }
                     }
                 },
@@ -356,14 +412,16 @@ window.jsoneditorOldJson = {
                         "query_params": {}
                     },
                     "outputs": {
-                        "code": 200,
-                        "msg": "msg",
-                        "data": {
-                            "id": 1,
-                            "username": "myzero1",
-                            "status": 2,
-                            "created_at": "2019-04-28 11:11:11",
-                            "updated_at": "2019-04-28 11:11:11"
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "id": 1,
+                                "username": "myzero1",
+                                "status": 2,
+                                "created_at": "2019-04-28 11:11:11",
+                                "updated_at": "2019-04-28 11:11:11"
+                            }
                         }
                     }
                 }
