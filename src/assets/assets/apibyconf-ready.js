@@ -69,14 +69,15 @@ window.jsoneditorOldJson = {
                             "data": {
                                 "username": "myzero1"
                             }
-                        },
-                        '735401': {
-                            "code": 735401,
-                            "msg": "Unauthorized",
-                            "data": {
-                                "username": "myzero1"
-                            }
                         }
+                        // ,
+                        // '735401': {
+                        //     "code": 735401,
+                        //     "msg": "Unauthorized",
+                        //     "data": {
+                        //         "username": "myzero1"
+                        //     }
+                        // }
                     }
                 },
                 "login": {
@@ -964,7 +965,20 @@ var templates = [
                   }
               }
           }
-      }
+      },
+      {
+          text: 'output',
+          title: 'Insert a output node',
+          className: 'jsoneditor-append jsoneditor-default',
+          field: '',
+          value: {
+                "code": "735200",
+                "msg": "ok",
+                "data": {
+                    "dataTitle": "dataVal"
+                }
+          }
+      },
   ];
 
 var schemas = {
@@ -1324,6 +1338,16 @@ var schemas = {
     },
     "outputs": {
         "title": "apibyconf-obj-outputs",
+        "type": "object",
+        "required": ["735200"],
+        "properties": {
+            "735200": {
+                "$ref": "output"
+            }
+        }
+    },
+    "output": {
+        "title": "apibyconf-obj-output",
         "type": "object",
         "required": ["code", "msg", "data"],
         "properties": {

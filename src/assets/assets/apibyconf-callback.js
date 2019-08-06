@@ -47,6 +47,13 @@ var onEvent = function(node, event){
         //     };
         //     editor.setSchema(this.schema,schemaRefs);
         // }
+        if (isOutputLay(node.path)) {
+            var schemaRefs = this.schemaRefs;
+            schemaRefs['outputs']['properties'][node.field] = {
+              "$ref": "output"
+            };
+            editor.setSchema(this.schema,schemaRefs);
+        }
 
         showContextmenu();
         adjustBackground();
@@ -72,17 +79,21 @@ var onCreateMenu = function onCreateMenu(items, node) {
     var controller = new Array();
     var action = new Array();
     var param = new Array();
+    var output = new Array();
     var data = new Array();
     var del = new Array();
     var cp = new Array();
     var auto = new Array();
 
     for (var i = 0;  i < items.length; i++) {
+        console.log(items);
         var text = items[i]['text'];
         if (text=='追加') {
             for (var j = items[i]['submenu'].length - 1; j >= 0; j--) {
                 if (items[i]['submenu'][j]['text'] == 'controller') {
                     controller.push(items[i]['submenu'][j]);
+                } else if (items[i]['submenu'][j]['text'] == 'output') {
+                    output.push(items[i]['submenu'][j]);
                 } else if (items[i]['submenu'][j]['text'] == 'param') {
                     param.push(items[i]['submenu'][j]);
                 } else if (items[i]['submenu'][j]['text'] == '自动') {
@@ -124,6 +135,7 @@ var onCreateMenu = function onCreateMenu(items, node) {
     if (node.path === null) {
         var selected = $(".jsoneditor-expandable.jsoneditor-highlight").text();
         $(".jsoneditor-expandable.jsoneditor-highlight").next().children(".jsoneditor-contextmenu").show();
+        console.log(selected);
         if (selected === 'controllers{0}') {
             return controller;
         } else if (selected === 'actions{0}') {
@@ -134,6 +146,8 @@ var onCreateMenu = function onCreateMenu(items, node) {
             return param;
         } else if (selected === 'query_params{0}') {
             return param;
+        } else if (selected === "outputs{0}should have required property '735200'") {
+            return output;
         } else if (selected === 'data{0}') {
             return data;
         } else if (selected === 'exclude[0]') {
@@ -166,6 +180,10 @@ var onCreateMenu = function onCreateMenu(items, node) {
             auto.push(del);
             auto.push(cp);
             return auto;
+        } else if(isOutputLay(node.path)){
+            output.push(del);
+            output.push(cp);
+            return output;
         }
     }
 }
@@ -205,6 +223,8 @@ var onEditable = function(node) {
             } else if(isSecurityExclude(node.path)){
                 return true;
             } else if(isSecurityMember(node.path)){
+                return true;
+            } else if(isOutputLay(node.path)){
                 return true;
             } else {
                 return {
