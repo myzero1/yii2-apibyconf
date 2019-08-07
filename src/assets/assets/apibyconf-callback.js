@@ -85,6 +85,8 @@ var onCreateMenu = function onCreateMenu(items, node) {
     var cp = new Array();
     var auto = new Array();
 
+    console.log(window.getCurentTime());
+
     for (var i = 0;  i < items.length; i++) {
         // console.log(items);
         var text = items[i]['text'];
