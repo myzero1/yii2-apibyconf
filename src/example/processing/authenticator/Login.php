@@ -112,7 +112,7 @@ class Login implements ApiActionProcessing
             $flag = true;
             if (!($flag = $model->save())) {
                 $trans->rollBack();
-                return ApiHelper::getModelError($model, ApiCodeMsg::DB_BAD_REQUEST);
+                return ApiHelper::getModelError($model, ApiCodeMsg::DB_VALIDATION_FAILED);
             }
 
             if ($flag) {
@@ -155,8 +155,8 @@ class Login implements ApiActionProcessing
     public function completeResult($db2outData = [])
     {
         $result = [
-            'code' => ApiCodeMsg::SUCCESS,
-            'msg' => ApiCodeMsg::SUCCESS_MSG,
+            'code' => ApiCodeMsg::OK,
+            'msg' => ApiCodeMsg::OK_MSG,
             'data' => is_null($db2outData) ? new \stdClass() : $db2outData,
         ];
 

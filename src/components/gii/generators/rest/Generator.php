@@ -345,7 +345,18 @@ EOD;
                 $template = ['create', 'update', 'delete', 'view', 'index', 'export', ];
                 foreach ($actions as $k => $action) {
                     $this->action = $action;
-                    if (in_array($action, $template)) {
+
+                    if ( $controller == 'authenticator' && $action == 'join' ) {
+                        $files[] = new CodeFile(
+                            sprintf('%s/processing/%s/%s.php', $modulePath, $controller, ucwords($action)),
+                            $this->render('rest/template/AuthenticatorJoinProcessing.php')
+                        );
+                    } else if ( $controller == 'authenticator' && $action == 'login' ) {
+                        $files[] = new CodeFile(
+                            sprintf('%s/processing/%s/%s.php', $modulePath, $controller, ucwords($action)),
+                            $this->render('rest/template/AuthenticatorLoginProcessing.php')
+                        );
+                    } else if (in_array($action, $template)) {
                         $files[] = new CodeFile(
                             sprintf('%s/processing/%s/%s.php', $modulePath, $controller, ucwords($action)),
                             $this->render(sprintf('rest/template/Api%sProcessing.php', ucfirst($action)))
@@ -439,7 +450,7 @@ EOD;
 
         $params['namespace'] = sprintf('%s\processing\%s\io',  $this->getRestModuleAlias(), $this->controller);
         $params['className'] = ucwords($this->action) . 'Io';
-        $params['egOutputData'] = $outputs = $controllerV['actions'][$action]['outputs']['data'];
+        $params['egOutputData'] = $outputs = $controllerV['actions'][$action]['outputs']['735200']['data'];
         $params['inputsKeys'] = $inputsKeys;
         $params['getInputRules'] = $getInputRules;
         $params['postInputRules'] = $postInputRules;

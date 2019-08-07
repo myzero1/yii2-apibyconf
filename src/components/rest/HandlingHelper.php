@@ -93,8 +93,8 @@ class HandlingHelper
 
         if ($isReturn) {
             $data = [
-                'code' => ApiCodeMsg::SUCCESS,
-                'msg' => ApiCodeMsg::SUCCESS_MSG,
+                'code' => ApiCodeMsg::OK,
+                'msg' => ApiCodeMsg::OK_MSG,
                 'data' => $ioClassName::egOutputData(),
             ];
 

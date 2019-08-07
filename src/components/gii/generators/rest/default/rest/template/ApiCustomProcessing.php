@@ -108,6 +108,7 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
      */
     public function handling($completedData)
     {
+    // for cud
         $model = ApiHelper::findModel('\myzero1\apibyconf\example\models\User', $completedData['id']);
         
         $model->load($completedData, '');
@@ -117,7 +118,7 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
             $flag = true;
             if (!($flag = $model->save())) {
                 $trans->rollBack();
-                return ApiHelper::getModelError($model, ApiCodeMsg::DB_BAD_REQUEST);
+                return ApiHelper::getModelError($model, ApiCodeMsg::DB_VALIDATION_FAILED);
             }
 
             if ($flag) {
@@ -133,7 +134,8 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
             ApiHelper::throwError('Unknown error.', __FILE__, __LINE__);
         }
 
-        /*
+    /*
+        // for index
         $result = [];
 
         $query = (new Query())
@@ -173,9 +175,10 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
         $result['items'] = $items;
 
         return $result;
-        */
+    */
         
-        /*
+    /*
+        // for export
         $completedData['page_size'] = ApiHelper::EXPORT_PAGE_SIZE;
         $completedData['page'] = ApiHelper::EXPORT_PAGE;
 
@@ -186,7 +189,6 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
             'dataProvider' => new \yii\data\ArrayDataProvider([
                 'allModels' => $items['data']['items'],
             ]),
-            /*
             'columns' => [
                 [
                     'attribute' => 'name',
@@ -199,7 +201,6 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
                     }
                 ],
             ],
-            */
         ];
 
         $name = sprintf('export-%s', time());
@@ -210,7 +211,7 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
         return [
             'url' => Yii::$app->urlManager->createAbsoluteUrl([sprintf('/%s.xls', $name)])
         ];
-        */
+    */
     }
 
     /**
@@ -238,8 +239,8 @@ class <?= $templateParams['className'] ?> implements ApiActionProcessing
     public function completeResult($db2outData = [])
     {
         $result = [
-            'code' => ApiCodeMsg::SUCCESS,
-            'msg' => ApiCodeMsg::SUCCESS_MSG,
+            'code' => ApiCodeMsg::OK,
+            'msg' => ApiCodeMsg::OK_MSG,
             'data' => is_null($db2outData) ? new \stdClass() : $db2outData,
         ];
 

@@ -32,6 +32,7 @@ var showContextmenu = function() {
     $(".jsoneditor-field[title=apibyconf-obj-controller]").parents('.jsoneditor-expandable').find('.jsoneditor-contextmenu').show();
     $(".jsoneditor-field[title=apibyconf-obj-action]").parents('.jsoneditor-expandable').find('.jsoneditor-contextmenu').show();
     $(".jsoneditor-field[title=apibyconf-obj-input]").parents('.jsoneditor-expandable').find('.jsoneditor-contextmenu').show();
+    $(".jsoneditor-field[title=apibyconf-obj-output]").parents('.jsoneditor-expandable').find('.jsoneditor-contextmenu').show();
     $(".apibyconf-outputs-data").parents('tr').find('.jsoneditor-contextmenu').show();
     // (清空 object)
     $(".jsoneditor-append .jsoneditor-readonly").parents('.jsoneditor-append').find('.jsoneditor-contextmenu').show();
@@ -102,7 +103,7 @@ var isOutputLay = function(path) {
 }
 
 var isDataLay = function(path) {
-    if (path.length > 6 && path[0] == 'controllers' && path[2] == 'actions' && path[4] == 'outputs') {
+    if (path.length > 7 && path[0] == 'controllers' && path[2] == 'actions' && path[4] == 'outputs') {
         return true;
     } else {
         return false;

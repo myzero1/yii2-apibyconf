@@ -1,19 +1,26 @@
 <?php
+$templateParams = $generator->getApiActionProcessingParams();
+
+echo "<?php\n";
+?>
 /**
  * @link https://github.com/myzero1
  * @copyright Copyright (c) 2019- My zero one
  * @license https://github.com/myzero1/yii2-apibyconf/blob/master/LICENSE
  */
 
-namespace example\processing\user;
+namespace <?= $templateParams['namespace'] ?>;
 
 use Yii;
+use yii\db\Query;
 use yii\web\ServerErrorHttpException;
 use myzero1\apibyconf\components\rest\Helper;
 use myzero1\apibyconf\components\rest\ApiHelper;
+use myzero1\apibyconf\components\rest\HandlingHelper;
 use myzero1\apibyconf\components\rest\ApiCodeMsg;
 use myzero1\apibyconf\components\rest\ApiActionProcessing;
-use example\processing\user\io\UpdateIo;
+use myzero1\apibyconf\components\rest\ApiAuthenticator;
+use <?= $templateParams['ioClass'] ?> as Io;
 
 /**
  * implement the ActionProcessing
@@ -23,7 +30,7 @@ use example\processing\user\io\UpdateIo;
  * @author Myzero1 <myzero1@sina.com>
  * @since 0.0
  */
-class Update implements ApiActionProcessing
+class <?= $templateParams['className'] ?> implements ApiActionProcessing
 {
     /**
      * @param $params mixed
@@ -40,17 +47,20 @@ class Update implements ApiActionProcessing
         if (Helper::isReturning($validatedInput)) {
             return $validatedInput;
         } else {
-            /*$in2dbData = $this->mappingInput2db($validatedInput);
+            $in2dbData = $this->mappingInput2db($validatedInput);
             $completedData = $this->completeData($in2dbData);
+            
+            $completedData = HandlingHelper::before($completedData, Io::class);
             $handledData = $this->handling($completedData);
+            $handledData = HandlingHelper::after($handledData);
 
             if (Helper::isReturning($handledData)) {
                 return $handledData;
             }
 
-            $db2outData = $this->mappingDb2output($handledData);*/
-            $db2outData = UpdateIo::egOutputData(); // for demo
+            $db2outData = $this->mappingDb2output($handledData);
             $result = $this->completeResult($db2outData);
+            
             return $result;
         }
     }
@@ -61,7 +71,7 @@ class Update implements ApiActionProcessing
      */
     public function inputValidate($input)
     {
-        return UpdateIo::inputValidate($input); // for demo
+        return Io::inputValidate($input); // for demo
     }
 
     /**
@@ -85,7 +95,7 @@ class Update implements ApiActionProcessing
      */
     public function completeData($in2dbData)
     {
-        $in2dbData['updated_at'] = time();
+        // $in2dbData['updated_at'] = time();
 
         $in2dbData = ApiHelper::inputFilter($in2dbData); // You should comment it, when in search action.
 
@@ -99,9 +109,27 @@ class Update implements ApiActionProcessing
      */
     public function handling($completedData)
     {
-        $model = ApiHelper::findModel('\myzero1\apibyconf\example\models\User', $completedData['id']);
+        $model = ApiAuthenticator::findByUsername($completedData['username']);
 
-        $model->load($completedData, '');
+        if (is_null($model)) {
+            return $result = [
+                'code' => ApiCodeMsg::NOT_FOUND,
+                'msg' => ApiCodeMsg::NOT_FOUND_MSG,
+                'data' => new \StdClass(),
+            ];
+        }
+
+        if ( !Yii::$app->security->validatePassword($completedData['password'], $model->password_hash) ) {
+            return $result = [
+                'code' => ApiCodeMsg::INPUT_LOGIC_VALIDATION_FAILED_MSG,
+                'msg' => 'Error in username or password',
+                'data' => new \StdClass(),
+            ];
+        }
+
+        if (!ApiAuthenticator::apiTokenIsValid($model->api_token)) {
+            $model->generateApiToken();
+        }
 
         $trans = Yii::$app->db->beginTransaction();
         try {
@@ -117,7 +145,7 @@ class Update implements ApiActionProcessing
                 $trans->rollBack();
                 ApiHelper::throwError('Failed to commint the transaction.', __FILE__, __LINE__);
             }
- 
+
             return $model->attributes;
         } catch (Exception $e) {
             $trans->rollBack();
@@ -137,10 +165,11 @@ class Update implements ApiActionProcessing
         ];
         $db2outData = ApiHelper::db2OutputField($handledData, $outputFieldMap);
 
-        $db2outData['created_at'] = ApiHelper::time2string($db2outData['created_at']);
-        $db2outData['updated_at'] = ApiHelper::time2string($db2outData['updated_at']);
+        $output['username'] = $db2outData['username'];
+        $output['api_token'] = $db2outData['api_token'];
+        $output['updated_at'] = $db2outData['updated_at'];
 
-        return $db2outData;
+        return $output;
     }
 
     /**
@@ -163,6 +192,6 @@ class Update implements ApiActionProcessing
      */
     public function egOutputData()
     {
-        return UpdateIo::egOutputData(); // for demo
+        return Io::egOutputData(); // for demo
     }
 }
