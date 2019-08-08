@@ -303,6 +303,7 @@ style;
         $content .= sprintf("\n## 1.2. Content \n");
 
         // var_dump($oldcontrollers);exit;
+        $logsKey = [];
         $i = 0;
         foreach ($oldcontrollers as $oldcontroller => $oldcontrollerV) {
             $i += 1;
@@ -316,6 +317,8 @@ style;
 
             $j = 0;
             foreach ($oldcontrollerV['actions'] as $action => $actionsV) {
+                $logsKey = array_merge($logsKey, array_keys($actionsV['logs']));
+
                 $j += 1;
                 $table .= sprintf("    - [1.2.%s.%s. %s](#1.2.%s.%s) \n", $i, $j, $action.'('.$actionsV['summary'].')', $i, $j);
 
@@ -397,6 +400,25 @@ style;
             }
         }
 
+        $lenght = count($oldcontrollers) + 1;
+        $table .= sprintf("- [1.2.%s. logs](#1.2.%s) \n", $lenght, $lenght);
+        $content .= sprintf("\n<a name='1.2.%s' ></a> \n", $lenght);
+        $content .= sprintf("## 1.2.%s. logs \n", $lenght);
+        $content .= sprintf("> [Go table](#1.1) \n\n");
+
+        $logsKey = array_unique($logsKey);
+        arsort($logsKey);
+        foreach ($logsKey as $logsKeyK => $logsKeyV) {
+            foreach ($oldcontrollers as $oldcontroller => $oldcontrollerV) {
+                foreach ($oldcontrollerV['actions'] as $action => $actionsV) {
+                    if (in_array($logsKeyV, array_keys($actionsV['logs']))) {
+                        $content .= sprintf("* %s \n\n", $logsKeyV);
+                        $content .= sprintf("   * controller:`%s`;actoin:`%s` \n\n", $oldcontroller, $action);
+                        $content .= sprintf("   * %s \n\n", $actionsV['logs'][$logsKeyV]);
+                    }
+                }
+            }
+        }
 
         $markdown = $info . $table . $content;
 
