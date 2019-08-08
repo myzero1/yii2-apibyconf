@@ -529,17 +529,19 @@ var templates = [
                           "path_params": {},
                           "query_params": {}
                       },
-                      "outputs": {
-                          "code": 200,
-                          "msg": "msg",
-                          "data": {
-                              "id": 1,
-                              "name": "name",
-                              "des": "description",
-                              "created_at": "2019-04-28 11:11:11",
-                              "updated_at": "2019-04-28 11:11:11"
-                          }
-                      }
+                    "outputs": {
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "id": 1,
+                                "name": "name",
+                                "des": "description",
+                                "created_at": "2019-04-28 11:11:11",
+                                "updated_at": "2019-04-28 11:11:11"
+                            }
+                        }
+                    }
                   },
                   "update": {
                       "summary": "The update action's summary",
@@ -577,17 +579,19 @@ var templates = [
                           },
                           "query_params": {}
                       },
-                      "outputs": {
-                          "code": 200,
-                          "msg": "msg",
-                          "data": {
-                              "id": 1,
-                              "name": "name",
-                              "des": "description",
-                              "created_at": "2019-04-28 11:11:11",
-                              "updated_at": "2019-04-28 11:11:11"
-                          }
-                      }
+                    "outputs": {
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "id": 1,
+                                "name": "name",
+                                "des": "description",
+                                "created_at": "2019-04-28 11:11:11",
+                                "updated_at": "2019-04-28 11:11:11"
+                            }
+                        }
+                    }
                   },
                   "view": {
                       "summary": "The view action's summary",
@@ -610,17 +614,19 @@ var templates = [
                           },
                           "query_params": {}
                       },
-                      "outputs": {
-                          "code": 200,
-                          "msg": "msg",
-                          "data": {
-                              "id": 1,
-                              "name": "name",
-                              "des": "desdescription",
-                              "created_at": "2019-04-28 11:11:11",
-                              "updated_at": "2019-04-28 11:11:11"
-                          }
-                      }
+                    "outputs": {
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "id": 1,
+                                "name": "name",
+                                "des": "description",
+                                "created_at": "2019-04-28 11:11:11",
+                                "updated_at": "2019-04-28 11:11:11"
+                            }
+                        }
+                    }
                   },
                   "delete": {
                       "summary": "The delete action's summary",
@@ -643,13 +649,15 @@ var templates = [
                           },
                           "query_params": {}
                       },
-                      "outputs": {
-                          "code": 200,
-                          "msg": "msg",
-                          "data": {
-                              "id": 1
-                          }
-                      }
+                    "outputs": {
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "id": 1
+                            }
+                        }
+                    }
                   },
                   "index": {
                       "summary": "The index action's summary",
@@ -679,34 +687,26 @@ var templates = [
                               }
                           }
                       },
-                      "outputs": {
-                          "code": 200,
-                          "msg": "msg",
-                          "data": {
-                              "total": 9,
-                              "page": 1,
-                              "page_size": 20,
-                              "items": [{
-                                  "id": 0,
-                                  "name": "n0",
-                                  "des": "d0",
-                                  "created_at": "2019-04-28 11:11:11",
-                                  "updated_at": "2019-04-28 11:11:11"
-                              }, {
-                                  "id": 1,
-                                  "name": "n1",
-                                  "des": "d1",
-                                  "created_at": "2019-04-28 11:11:11",
-                                  "updated_at": "2019-04-28 11:11:11"
-                              }, {
-                                  "id": 2,
-                                  "name": "n2",
-                                  "des": "d2",
-                                  "created_at": "2019-04-28 11:11:11",
-                                  "updated_at": "2019-04-28 11:11:11"
-                              }]
-                          }
-                      }
+                    "outputs": {
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "total": 9,
+                                "page": 1,
+                                "page_size": 20,
+                                "items": [
+                                    {
+                                        "id": 0,
+                                        "name": "n0",
+                                        "des": "d0",
+                                        "created_at": "2019-04-28 11:11:11",
+                                        "updated_at": "2019-04-28 11:11:11"
+                                    }
+                                ]
+                            }
+                        }
+                    }
                   },
                   "export": {
                       "summary": "The export action's summary",
@@ -736,13 +736,15 @@ var templates = [
                               }
                           }
                       },
-                      "outputs": {
-                          "code": 200,
-                          "msg": "msg",
-                          "data": {
-                              "url": "/export.xsl"
-                          }
-                      }
+                    "outputs": {
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "url": "/export.xsl"
+                            }
+                        }
+                    }
                   },
                   "custom": {
                       "summary": "The custom action's summary",
@@ -773,17 +775,19 @@ var templates = [
                           },
                           "query_params": {}
                       },
-                      "outputs": {
-                          "code": 200,
-                          "msg": "msg",
-                          "data": {
-                              "id": 1,
-                              "name": "rename",
-                              "des": "description",
-                              "created_at": "2019-04-28 11:11:11",
-                              "updated_at": "2019-04-28 11:11:11"
-                          }
-                      }
+                    "outputs": {
+                        '735200': {
+                            "code": 735200,
+                            "msg": "ok",
+                            "data": {
+                                "id": 1,
+                                "name": "rename",
+                                "des": "description",
+                                "created_at": "2019-04-28 11:11:11",
+                                "updated_at": "2019-04-28 11:11:11"
+                            }
+                        }
+                    }
                   }
               }
           }
@@ -834,17 +838,19 @@ var templates = [
                   "path_params": {},
                   "query_params": {}
               },
-              "outputs": {
-                  "code": 200,
-                  "msg": "msg",
-                  "data": {
-                      "id": 1,
-                      "name": "name",
-                      "des": "description",
-                      "created_at": "2019-04-28 11:11:11",
-                      "updated_at": "2019-04-28 11:11:11"
-                  }
-              }
+                "outputs": {
+                    '735200': {
+                        "code": 735200,
+                        "msg": "ok",
+                        "data": {
+                            "id": 1,
+                            "name": "rename",
+                            "des": "description",
+                            "created_at": "2019-04-28 11:11:11",
+                            "updated_at": "2019-04-28 11:11:11"
+                        }
+                    }
+                }
           }
       },
       {
@@ -888,17 +894,19 @@ var templates = [
                   },
                   "query_params": {}
               },
-              "outputs": {
-                  "code": 200,
-                  "msg": "msg",
-                  "data": {
-                      "id": 1,
-                      "name": "name",
-                      "des": "description",
-                      "created_at": "2019-04-28 11:11:11",
-                      "updated_at": "2019-04-28 11:11:11"
-                  }
-              }
+                "outputs": {
+                    '735200': {
+                        "code": 735200,
+                        "msg": "ok",
+                        "data": {
+                            "id": 1,
+                            "name": "rename",
+                            "des": "description",
+                            "created_at": "2019-04-28 11:11:11",
+                            "updated_at": "2019-04-28 11:11:11"
+                        }
+                    }
+                }
           }
       },
       {
@@ -927,17 +935,19 @@ var templates = [
                   },
                   "query_params": {}
               },
-              "outputs": {
-                  "code": 200,
-                  "msg": "msg",
-                  "data": {
-                      "id": 1,
-                      "name": "name",
-                      "des": "desdescription",
-                      "created_at": "2019-04-28 11:11:11",
-                      "updated_at": "2019-04-28 11:11:11"
-                  }
-              }
+                "outputs": {
+                    '735200': {
+                        "code": 735200,
+                        "msg": "ok",
+                        "data": {
+                            "id": 1,
+                            "name": "rename",
+                            "des": "description",
+                            "created_at": "2019-04-28 11:11:11",
+                            "updated_at": "2019-04-28 11:11:11"
+                        }
+                    }
+                }
           }
       },
       {
@@ -966,13 +976,15 @@ var templates = [
                   },
                   "query_params": {}
               },
-              "outputs": {
-                  "code": 200,
-                  "msg": "msg",
-                  "data": {
-                      "id": 1
-                  }
-              }
+                "outputs": {
+                    '735200': {
+                        "code": 735200,
+                        "msg": "ok",
+                        "data": {
+                            "id": 1
+                        }
+                    }
+                }
           }
       },
       {
@@ -1008,34 +1020,26 @@ var templates = [
                       }
                   }
               },
-              "outputs": {
-                  "code": 200,
-                  "msg": "msg",
-                  "data": {
-                      "total": 9,
-                      "page": 1,
-                      "page_size": 20,
-                      "items": [{
-                          "id": 0,
-                          "name": "n0",
-                          "des": "d0",
-                          "created_at": "2019-04-28 11:11:11",
-                          "updated_at": "2019-04-28 11:11:11"
-                      }, {
-                          "id": 1,
-                          "name": "n1",
-                          "des": "d1",
-                          "created_at": "2019-04-28 11:11:11",
-                          "updated_at": "2019-04-28 11:11:11"
-                      }, {
-                          "id": 2,
-                          "name": "n2",
-                          "des": "d2",
-                          "created_at": "2019-04-28 11:11:11",
-                          "updated_at": "2019-04-28 11:11:11"
-                      }]
-                  }
-              }
+                "outputs": {
+                    '735200': {
+                        "code": 735200,
+                        "msg": "ok",
+                        "data": {
+                            "total": 9,
+                            "page": 1,
+                            "page_size": 20,
+                            "items": [
+                                {
+                                    "id": 0,
+                                    "name": "n0",
+                                    "des": "d0",
+                                    "created_at": "2019-04-28 11:11:11",
+                                    "updated_at": "2019-04-28 11:11:11"
+                                }
+                            ]
+                        }
+                    }
+                }
           }
       },
       {
@@ -1071,13 +1075,15 @@ var templates = [
                       }
                   }
               },
-              "outputs": {
-                  "code": 200,
-                  "msg": "msg",
-                  "data": {
-                      "url": "/export.xsl"
-                  }
-              }
+                "outputs": {
+                    '735200': {
+                        "code": 735200,
+                        "msg": "ok",
+                        "data": {
+                            "url": "/export.xsl"
+                        }
+                    }
+                }
           }
       },
       {
@@ -1114,17 +1120,19 @@ var templates = [
                   },
                   "query_params": {}
               },
-              "outputs": {
-                  "code": 200,
-                  "msg": "msg",
-                  "data": {
-                      "id": 1,
-                      "name": "rename",
-                      "des": "description",
-                      "created_at": "2019-04-28 11:11:11",
-                      "updated_at": "2019-04-28 11:11:11"
-                  }
-              }
+                "outputs": {
+                    '735200': {
+                        "code": 735200,
+                        "msg": "ok",
+                        "data": {
+                            "id": 1,
+                            "name": "rename",
+                            "des": "description",
+                            "created_at": "2019-04-28 11:11:11",
+                            "updated_at": "2019-04-28 11:11:11"
+                        }
+                    }
+                }
           }
       },
       {
