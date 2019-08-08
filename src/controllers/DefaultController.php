@@ -153,7 +153,7 @@ class DefaultController extends Controller
                 $dataStr = json_encode($path_outputs, JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT);
 
                 $outputParams['200'] = [
-                    'description' => 'outputs',
+                    'description' => 'The results of http 200',
                     'type' => 'string',
                     'example' => $dataStr,
                 ];
