@@ -44,7 +44,6 @@ class DefaultController extends Controller
         $swaggerData = ApiHelper::getApiConf($mId);
         $json = json_decode($swaggerData, true)['json'];
         $oldcontrollers = $json['controllers'];
-        $oldcontrollers = ApiHelper::rmNode($json['controllers']);
         $controllers = [];
         $actions = [];
         $paths = [];
@@ -81,7 +80,7 @@ class DefaultController extends Controller
             $controllers[] = $controller;
 
             $inputParams = [];
-            $pathsSource = ApiHelper::rmNode($v['actions']);
+            $pathsSource = $v['actions'];
             $noPath = ['create', 'index',];
             $noQuery = ['create', 'update', 'view', 'delete',];
             $noBody = ['index', 'view', 'delete',];
@@ -150,15 +149,24 @@ class DefaultController extends Controller
 
                 $outputParams = [];
                 $path_outputs = $v1['outputs'];
-                $path_outputs = ApiHelper::rmNode($path_outputs);
 
                 $dataStr = json_encode($path_outputs, JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT);
 
                 $outputParams['200'] = [
-                    'description' => 'outputs',
+                    'description' => 'The results of http 200',
                     'type' => 'string',
                     'example' => $dataStr,
                 ];
+
+                // foreach ($path_outputs as $pok => $pov) {
+                //     $outputParams[$pok] = [
+                //         'description' => $pov['msg'],
+                //         'type' => 'string',
+                //         'example' => json_encode($pov, JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT),
+                //     ];
+                // }
+
+                // var_dump($outputParams);exit;
 
                 // $pathName = '/demo/{id}';
                 $k1 = ApiHelper::uncamelize($k1, '-');
@@ -275,7 +283,6 @@ style;
         $json = json_decode($swaggerData, true)['json'];
         $json['basePath'] = '/' . $json['info']['version'];
         $oldcontrollers = $json['controllers'];
-        $oldcontrollers = ApiHelper::rmNode($json['controllers']);
 
         $info = '';
         $table = '';
@@ -296,6 +303,7 @@ style;
         $content .= sprintf("\n## 1.2. Content \n");
 
         // var_dump($oldcontrollers);exit;
+        $logsKey = [];
         $i = 0;
         foreach ($oldcontrollers as $oldcontroller => $oldcontrollerV) {
             $i += 1;
@@ -309,6 +317,8 @@ style;
 
             $j = 0;
             foreach ($oldcontrollerV['actions'] as $action => $actionsV) {
+                $logsKey = array_merge($logsKey, array_keys($actionsV['logs']));
+
                 $j += 1;
                 $table .= sprintf("    - [1.2.%s.%s. %s](#1.2.%s.%s) \n", $i, $j, $action.'('.$actionsV['summary'].')', $i, $j);
 
@@ -390,6 +400,25 @@ style;
             }
         }
 
+        $lenght = count($oldcontrollers) + 1;
+        $table .= sprintf("- [1.2.%s. logs](#1.2.%s) \n", $lenght, $lenght);
+        $content .= sprintf("\n<a name='1.2.%s' ></a> \n", $lenght);
+        $content .= sprintf("## 1.2.%s. logs \n", $lenght);
+        $content .= sprintf("> [Go table](#1.1) \n\n");
+
+        $logsKey = array_unique($logsKey);
+        arsort($logsKey);
+        foreach ($logsKey as $logsKeyK => $logsKeyV) {
+            foreach ($oldcontrollers as $oldcontroller => $oldcontrollerV) {
+                foreach ($oldcontrollerV['actions'] as $action => $actionsV) {
+                    if (in_array($logsKeyV, array_keys($actionsV['logs']))) {
+                        $content .= sprintf("* %s \n\n", $logsKeyV);
+                        $content .= sprintf("   * controller: `%s`;actoin: `%s` \n\n", $oldcontroller, $action);
+                        $content .= sprintf("   * %s \n\n", $actionsV['logs'][$logsKeyV]);
+                    }
+                }
+            }
+        }
 
         $markdown = $info . $table . $content;
 

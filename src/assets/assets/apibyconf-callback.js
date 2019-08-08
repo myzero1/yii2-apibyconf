@@ -54,6 +54,13 @@ var onEvent = function(node, event){
             };
             editor.setSchema(this.schema,schemaRefs);
         }
+        if (isLogLay(node.path)) {
+            var schemaRefs = this.schemaRefs;
+            schemaRefs['logs']['properties'][node.field] = {
+              "$ref": "log"
+            };
+            editor.setSchema(this.schema,schemaRefs);
+        }
 
         showContextmenu();
         adjustBackground();
@@ -70,7 +77,7 @@ var onError = function(error){
 }
 
 var onClassName = function(node){
-    if(isDataLay(node.path) || isSecurityExclude(node.path) || isSecurityMember(node.path)){
+    if(isDataLay(node.path) || isSecurityExclude(node.path) || isSecurityMember(node.path) || isLogLay(node.path)){
         return 'apibyconf-outputs-data';
     }
 }
@@ -84,6 +91,7 @@ var onCreateMenu = function onCreateMenu(items, node) {
     var del = new Array();
     var cp = new Array();
     var auto = new Array();
+    var log = new Array();
 
     for (var i = 0;  i < items.length; i++) {
         // console.log(items);
@@ -117,6 +125,8 @@ var onCreateMenu = function onCreateMenu(items, node) {
                     action.push(items[i]['submenu'][j]);
                 } else if (items[i]['submenu'][j]['text'] == 'export') {
                     action.push(items[i]['submenu'][j]);
+                } else if (items[i]['submenu'][j]['text'] == 'log') {
+                    log.push(items[i]['submenu'][j]);
                 }
             }
         } else if (text=='移除') {
@@ -150,6 +160,8 @@ var onCreateMenu = function onCreateMenu(items, node) {
             return output;
         } else if (selected === 'data{0}') {
             return data;
+        } else if (selected === 'logs{0}') {
+            return log;
         } else if (selected === 'exclude[0]') {
             return auto;
         } else {
@@ -184,6 +196,10 @@ var onCreateMenu = function onCreateMenu(items, node) {
             output.push(del);
             output.push(cp);
             return output;
+        } else if(isLogLay(node.path)){
+            log.push(del);
+            log.push(cp);
+            return log;
         }
     }
 }
@@ -225,6 +241,8 @@ var onEditable = function(node) {
             } else if(isSecurityMember(node.path)){
                 return true;
             } else if(isOutputLay(node.path)){
+                return true;
+            } else if(isLogLay(node.path)){
                 return true;
             } else {
                 return {
