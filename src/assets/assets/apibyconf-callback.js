@@ -85,7 +85,8 @@ var onCreateMenu = function onCreateMenu(items, node) {
     var cp = new Array();
     var auto = new Array();
 
-    console.log(window.getCurentTime());
+    // console.log(window.getCurentTime());
+    window.curentTime = window.getCurentTime();
 
     for (var i = 0;  i < items.length; i++) {
         // console.log(items);

@@ -80,7 +80,7 @@ window.jsoneditorOldJson = {
                     "method": "post",
                     "uri": "/{controller}/join",
                     "logs": {
-                        '11': 'create action'
+                        [window.curentTime]: "add action"
                     },
                     "inputs": {
                         "body_params": {
@@ -166,6 +166,9 @@ window.jsoneditorOldJson = {
                     "description": "The action's description",
                     "method": "post",
                     "uri": "/{controller}/login",
+                    "logs": {
+                        [window.curentTime]: "add action"
+                    },
                     "inputs": {
                         "body_params": {
                             "username": {
@@ -207,6 +210,9 @@ window.jsoneditorOldJson = {
                     "description": "The action's description",
                     "method": "post",
                     "uri": "/{controller}",
+                    "logs": {
+                        [window.curentTime]: "add action"
+                    },
                     "inputs": {
                         "body_params": {
                             "username": {
@@ -252,6 +258,9 @@ window.jsoneditorOldJson = {
                     "description": "The action's description",
                     "method": "put",
                     "uri": "/{controller}/{id}",
+                    "logs": {
+                        [window.curentTime]: "add action"
+                    },
                     "inputs": {
                         "body_params": {
                             "username": {
@@ -305,6 +314,9 @@ window.jsoneditorOldJson = {
                     "description": "The action's description",
                     "method": "get",
                     "uri": "/{controller}/{id}",
+                    "logs": {
+                        [window.curentTime]: "add action"
+                    },
                     "inputs": {
                         "body_params": {},
                         "path_params": {
@@ -337,6 +349,9 @@ window.jsoneditorOldJson = {
                     "description": "The action's description",
                     "method": "delete",
                     "uri": "/{controller}/{id}",
+                    "logs": {
+                        [window.curentTime]: "add action"
+                    },
                     "inputs": {
                         "body_params": {},
                         "path_params": {
@@ -365,6 +380,9 @@ window.jsoneditorOldJson = {
                     "description": "The action's description",
                     "method": "get",
                     "uri": "/{controller}",
+                    "logs": {
+                        [window.curentTime]: "add action"
+                    },
                     "inputs": {
                         "body_params": {},
                         "path_params": {},
@@ -402,6 +420,9 @@ window.jsoneditorOldJson = {
                     "description": "It require \"yii2tech/spreadsheet\" Yii2 extension",
                     "method": "get",
                     "uri": "/{controller}/export",
+                    "logs": {
+                        [window.curentTime]: "add action"
+                    },
                     "inputs": {
                         "body_params": {},
                         "path_params": {},
@@ -430,6 +451,9 @@ window.jsoneditorOldJson = {
                     "description": "The action's description",
                     "method": "patch",
                     "uri": "/{controller}/{id}/status",
+                    "logs": {
+                        [window.curentTime]: "add action"
+                    },
                     "inputs": {
                         "body_params": {
                             "status": {
@@ -484,6 +508,9 @@ var templates = [
                       "description": "The action's description",
                       "method": "post",
                       "uri": "/{controller}",
+                      "logs": {
+                            [window.getCurentTime()]: "add action"
+                      },
                       "inputs": {
                           "body_params": {
                               "name": {
@@ -521,6 +548,9 @@ var templates = [
                       "description": "The action's description",
                       "method": "put",
                       "uri": "/{controller}/{id}",
+                      "logs": {
+                            [window.getCurentTime()]: "add action"
+                      },
                       "inputs": {
                           "body_params": {
                               "name": {
@@ -566,6 +596,9 @@ var templates = [
                       "description": "The action's description",
                       "method": "get",
                       "uri": "/{controller}/{id}",
+                      "logs": {
+                            [window.getCurentTime()]: "add action"
+                      },
                       "inputs": {
                           "body_params": {},
                           "path_params": {
@@ -596,6 +629,9 @@ var templates = [
                       "description": "The action's description",
                       "method": "delete",
                       "uri": "/{controller}/{id}",
+                      "logs": {
+                            [window.getCurentTime()]: "add action"
+                      },
                       "inputs": {
                           "body_params": {},
                           "path_params": {
@@ -622,6 +658,9 @@ var templates = [
                       "description": "The action's description",
                       "method": "get",
                       "uri": "/{controller}",
+                      "logs": {
+                            [window.getCurentTime()]: "add action"
+                      },
                       "inputs": {
                           "body_params": {},
                           "path_params": {},
@@ -676,6 +715,9 @@ var templates = [
                       "description": "The action's description",
                       "method": "get",
                       "uri": "/{controller}/export",
+                      "logs": {
+                            [window.getCurentTime()]: "add action"
+                      },
                       "inputs": {
                           "body_params": {},
                           "path_params": {},
@@ -709,6 +751,9 @@ var templates = [
                       "description": "The action's description",
                       "method": "patch",
                       "uri": "/{controller}/{id}/custom",
+                      "logs": {
+                            [window.getCurentTime()]: "add action"
+                      },
                       "inputs": {
                           "body_params": {
                               "name": {
@@ -768,6 +813,9 @@ var templates = [
               "description": "The create action's description",
               "method": "post",
               "uri": "/{controller}",
+              "logs": {
+                    [window.getCurentTime()]: "add action"
+              },
               "inputs": {
                   "body_params": {
                       "name": {
@@ -811,6 +859,9 @@ var templates = [
               "description": "The update action's description",
               "method": "put",
               "uri": "/{controller}/{id}",
+              "logs": {
+                    [window.getCurentTime()]: "add action"
+              },
               "inputs": {
                   "body_params": {
                       "name": {
@@ -862,6 +913,9 @@ var templates = [
               "description": "The view action's description",
               "method": "get",
               "uri": "/{controller}/{id}",
+              "logs": {
+                    [window.getCurentTime()]: "add action"
+              },
               "inputs": {
                   "body_params": {},
                   "path_params": {
@@ -898,6 +952,9 @@ var templates = [
               "description": "The delete action's description",
               "method": "delete",
               "uri": "/{controller}/{id}",
+              "logs": {
+                    [window.getCurentTime()]: "add action"
+              },
               "inputs": {
                   "body_params": {},
                   "path_params": {
@@ -930,6 +987,9 @@ var templates = [
               "description": "The index action's description",
               "method": "get",
               "uri": "/{controller}",
+              "logs": {
+                    [window.getCurentTime()]: "add action"
+              },
               "inputs": {
                   "body_params": {},
                   "path_params": {},
@@ -990,6 +1050,9 @@ var templates = [
               "description": "The export action's description",
               "method": "get",
               "uri": "/{controller}/export",
+              "logs": {
+                    [window.getCurentTime()]: "add action"
+              },
               "inputs": {
                   "body_params": {},
                   "path_params": {},
@@ -1029,6 +1092,9 @@ var templates = [
               "description": "The custom action's description",
               "method": "patch",
               "uri": "/{controller}/{id}/custom",
+              "logs": {
+                    [window.getCurentTime()]: "add action"
+              },
               "inputs": {
                   "body_params": {
                       "name": {
