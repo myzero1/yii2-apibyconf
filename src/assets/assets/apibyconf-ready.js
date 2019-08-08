@@ -33,8 +33,6 @@ window.getCurentTime = function getCurentTime() {
     return(clock); 
 }
 
-window.curentTime = window.getCurentTime();
-
 window.jsoneditorOldJson = {
     "swagger": "2.0",
     "info": {
@@ -80,7 +78,7 @@ window.jsoneditorOldJson = {
                     "method": "post",
                     "uri": "/{controller}/join",
                     "logs": {
-                        [window.curentTime]: "add action"
+                        [window.getCurentTime()]: "add action"
                     },
                     "inputs": {
                         "body_params": {
@@ -167,7 +165,7 @@ window.jsoneditorOldJson = {
                     "method": "post",
                     "uri": "/{controller}/login",
                     "logs": {
-                        [window.curentTime]: "add action"
+                        [window.getCurentTime()]: "add action"
                     },
                     "inputs": {
                         "body_params": {
@@ -211,7 +209,7 @@ window.jsoneditorOldJson = {
                     "method": "post",
                     "uri": "/{controller}",
                     "logs": {
-                        [window.curentTime]: "add action"
+                        [window.getCurentTime()]: "add action"
                     },
                     "inputs": {
                         "body_params": {
@@ -259,7 +257,7 @@ window.jsoneditorOldJson = {
                     "method": "put",
                     "uri": "/{controller}/{id}",
                     "logs": {
-                        [window.curentTime]: "add action"
+                        [window.getCurentTime()]: "add action"
                     },
                     "inputs": {
                         "body_params": {
@@ -315,7 +313,7 @@ window.jsoneditorOldJson = {
                     "method": "get",
                     "uri": "/{controller}/{id}",
                     "logs": {
-                        [window.curentTime]: "add action"
+                        [window.getCurentTime()]: "add action"
                     },
                     "inputs": {
                         "body_params": {},
@@ -350,7 +348,7 @@ window.jsoneditorOldJson = {
                     "method": "delete",
                     "uri": "/{controller}/{id}",
                     "logs": {
-                        [window.curentTime]: "add action"
+                        [window.getCurentTime()]: "add action"
                     },
                     "inputs": {
                         "body_params": {},
@@ -381,7 +379,7 @@ window.jsoneditorOldJson = {
                     "method": "get",
                     "uri": "/{controller}",
                     "logs": {
-                        [window.curentTime]: "add action"
+                        [window.getCurentTime()]: "add action"
                     },
                     "inputs": {
                         "body_params": {},
@@ -421,7 +419,7 @@ window.jsoneditorOldJson = {
                     "method": "get",
                     "uri": "/{controller}/export",
                     "logs": {
-                        [window.curentTime]: "add action"
+                        [window.getCurentTime()]: "add action"
                     },
                     "inputs": {
                         "body_params": {},
@@ -452,7 +450,7 @@ window.jsoneditorOldJson = {
                     "method": "patch",
                     "uri": "/{controller}/{id}/status",
                     "logs": {
-                        [window.curentTime]: "add action"
+                        [window.getCurentTime()]: "add action"
                     },
                     "inputs": {
                         "body_params": {
@@ -1146,7 +1144,7 @@ var templates = [
           text: 'log',
           title: 'Insert a log node',
           className: 'jsoneditor-append jsoneditor-default',
-          field: window.curentTime,
+          field: window.getCurentTime(),
           value: "add a log"
       },
   ];
@@ -1542,7 +1540,7 @@ var schemas = {
         "type": "object",
         "required": [],
         "properties": {
-            [window.curentTime]: {
+            [window.getCurentTime()]: {
                 "$ref": "log"
             }
         }
