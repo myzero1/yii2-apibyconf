@@ -1142,6 +1142,13 @@ var templates = [
                 }
           }
       },
+      {
+          text: 'log',
+          title: 'Insert a log node',
+          className: 'jsoneditor-append jsoneditor-default',
+          field: window.curentTime,
+          value: "add a log"
+      },
   ];
 
 var schemas = {
@@ -1385,6 +1392,9 @@ var schemas = {
                 "title": "method",
                 "enum": ["post", "get", "put", "delete", "patch", "options"]
             },
+            "logs": {
+                "$ref": "logs"
+            },
             "inputs": {
                 "$ref": "inputs"
             },
@@ -1526,5 +1536,19 @@ var schemas = {
                 "type": "object"
             }
         }
-    }
+    },
+    "logs": {
+        "title": "apibyconf-obj-logs",
+        "type": "object",
+        "required": [],
+        "properties": {
+            [window.curentTime]: {
+                "$ref": "log"
+            }
+        }
+    },
+    "log": {
+        "title": "apibyconf-obj-log",
+        "type": ["number", "string"]
+    },
 };

@@ -102,6 +102,14 @@ var isOutputLay = function(path) {
     }
 }
 
+var isLogLay = function(path) {
+    if (path.length == 6 && path[0] == 'controllers' && path[2] == 'actions' && path[4] == 'logs') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 var isDataLay = function(path) {
     if (path.length > 7 && path[0] == 'controllers' && path[2] == 'actions' && path[4] == 'outputs') {
         return true;
