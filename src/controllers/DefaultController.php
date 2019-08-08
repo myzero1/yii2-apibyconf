@@ -413,7 +413,7 @@ style;
                 foreach ($oldcontrollerV['actions'] as $action => $actionsV) {
                     if (in_array($logsKeyV, array_keys($actionsV['logs']))) {
                         $content .= sprintf("* %s \n\n", $logsKeyV);
-                        $content .= sprintf("   * controller:`%s`;actoin:`%s` \n\n", $oldcontroller, $action);
+                        $content .= sprintf("   * controller: `%s`;actoin: `%s` \n\n", $oldcontroller, $action);
                         $content .= sprintf("   * %s \n\n", $actionsV['logs'][$logsKeyV]);
                     }
                 }
