@@ -44,7 +44,6 @@ class DefaultController extends Controller
         $swaggerData = ApiHelper::getApiConf($mId);
         $json = json_decode($swaggerData, true)['json'];
         $oldcontrollers = $json['controllers'];
-        $oldcontrollers = ApiHelper::rmNode($json['controllers']);
         $controllers = [];
         $actions = [];
         $paths = [];
@@ -81,7 +80,7 @@ class DefaultController extends Controller
             $controllers[] = $controller;
 
             $inputParams = [];
-            $pathsSource = ApiHelper::rmNode($v['actions']);
+            $pathsSource = $v['actions'];
             $noPath = ['create', 'index',];
             $noQuery = ['create', 'update', 'view', 'delete',];
             $noBody = ['index', 'view', 'delete',];
@@ -150,7 +149,6 @@ class DefaultController extends Controller
 
                 $outputParams = [];
                 $path_outputs = $v1['outputs'];
-                $path_outputs = ApiHelper::rmNode($path_outputs);
 
                 // $dataStr = json_encode($path_outputs, JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT);
 
@@ -285,7 +283,6 @@ style;
         $json = json_decode($swaggerData, true)['json'];
         $json['basePath'] = '/' . $json['info']['version'];
         $oldcontrollers = $json['controllers'];
-        $oldcontrollers = ApiHelper::rmNode($json['controllers']);
 
         $info = '';
         $table = '';
