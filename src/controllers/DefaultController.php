@@ -152,13 +152,23 @@ class DefaultController extends Controller
                 $path_outputs = $v1['outputs'];
                 $path_outputs = ApiHelper::rmNode($path_outputs);
 
-                $dataStr = json_encode($path_outputs, JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT);
+                // $dataStr = json_encode($path_outputs, JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT);
 
-                $outputParams['200'] = [
-                    'description' => 'outputs',
-                    'type' => 'string',
-                    'example' => $dataStr,
-                ];
+                // $outputParams['200'] = [
+                //     'description' => 'outputs',
+                //     'type' => 'string',
+                //     'example' => $dataStr,
+                // ];
+
+                foreach ($path_outputs as $pok => $pov) {
+                    $outputParams[$pok] = [
+                        'description' => $pov['msg'],
+                        'type' => 'string',
+                        'example' => json_encode($pov, JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT),
+                    ];
+                }
+
+                // var_dump($outputParams);exit;
 
                 // $pathName = '/demo/{id}';
                 $k1 = ApiHelper::uncamelize($k1, '-');
