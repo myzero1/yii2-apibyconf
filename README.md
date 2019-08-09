@@ -6,9 +6,9 @@ You can generate restfull api by configuration.
 Show time
 ------------
 
-![](https://github.com/myzero1/show-time/blob/master/yii2-apibyconf/screenshot/104.png)
-![](https://github.com/myzero1/show-time/blob/master/yii2-apibyconf/screenshot/102.png)
-![](https://github.com/myzero1/show-time/blob/master/yii2-apibyconf/screenshot/103.png)
+![](https://github.com/myzero1/show-time/blob/master/yii2-apibyconf/screenshot/201.png)
+![](https://github.com/myzero1/show-time/blob/master/yii2-apibyconf/screenshot/202.png)
+![](https://github.com/myzero1/show-time/blob/master/yii2-apibyconf/screenshot/203.png)
 
 Installation
 ------------
