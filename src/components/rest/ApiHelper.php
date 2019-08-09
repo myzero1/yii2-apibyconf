@@ -598,7 +598,7 @@ class ApiHelper
             }
         }
 
-        return 'apibyconfModule';
+        return 'apibyconf';
     }
 
     /**
