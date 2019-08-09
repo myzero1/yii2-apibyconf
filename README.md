@@ -71,7 +71,7 @@ return [
     ......
     'modules' => [
         ......
-        'example' => '\myzero1\apibyconf\example\apibyconfModule',// should add table to db by 'example/models/user.sql'
+        'example' => '\myzero1\apibyconf\example\ApiByConfModule',// should add table to db by 'example/models/user.sql'
         'apibyconf' => 'myzero1\apibyconf\Module',
         ......
     ],
@@ -113,7 +113,7 @@ return [
     'modules' => [
         ......
         'v1' => [
-            'class' => 'backend\modules\v1\apibyconfModule',
+            'class' => 'backend\modules\v1\ApiByConfModule',
             'docToken' => 'docTokenAsMyzero1',
             'apiTokenExpire' => 24 * 3600 * 365,
             'fixedUser' => [
