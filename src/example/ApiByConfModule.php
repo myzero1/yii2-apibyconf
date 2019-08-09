@@ -27,7 +27,7 @@ class ApiByConfModule extends BaseModule implements BootstrapInterface
     public function bootstrap($app)
     {
         if ($app instanceof \yii\web\Application) {
-            Yii::$app->params['apibyconfAuthenticator_4c0122e47a06f9a82ddcecf3bd46264a'] = 'httpBearerAuth';
+            Yii::$app->params['apibyconfAuthenticator_4c0122e47a06f9a82ddcecf3bd46264a'] = 'noAuthenticator';
             Yii::$app->params['apibyconfUnAuthenticateActions_4c0122e47a06f9a82ddcecf3bd46264a'] = [
                 'post /authenticator/login',
                 'post /authenticator/join',

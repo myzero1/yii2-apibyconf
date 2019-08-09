@@ -25,7 +25,7 @@
         },
         "schemes": "http",
         "mySecurity": {
-            "security": "httpBearerAuth",
+            "security": "noAuthenticator",
             "exclude": [
                 "post \/authenticator\/login",
                 "post \/authenticator\/join"
