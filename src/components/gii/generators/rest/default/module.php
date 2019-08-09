@@ -21,7 +21,7 @@ use myzero1\apibyconf\components\rest\ApiHelper;
 /**
  * <?= $templateParams['moduleID'] ?> module definition class
  */
-class <?= $templateParams['className'] ?> extends BaseModule implements BootstrapInterface
+class ApiByConfModule extends BaseModule implements BootstrapInterface
 {
     /**
      * {@inheritdoc}
