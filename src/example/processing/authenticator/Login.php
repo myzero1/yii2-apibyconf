@@ -12,10 +12,11 @@ use yii\db\Query;
 use yii\web\ServerErrorHttpException;
 use myzero1\apibyconf\components\rest\Helper;
 use myzero1\apibyconf\components\rest\ApiHelper;
+use myzero1\apibyconf\components\rest\HandlingHelper;
 use myzero1\apibyconf\components\rest\ApiCodeMsg;
 use myzero1\apibyconf\components\rest\ApiActionProcessing;
-use example\processing\authenticator\io\LoginIo;
 use myzero1\apibyconf\components\rest\ApiAuthenticator;
+use example\processing\authenticator\io\LoginIo as Io;
 
 /**
  * implement the ActionProcessing
@@ -44,15 +45,18 @@ class Login implements ApiActionProcessing
         } else {
             $in2dbData = $this->mappingInput2db($validatedInput);
             $completedData = $this->completeData($in2dbData);
+            
+            $completedData = HandlingHelper::before($completedData, Io::class);
             $handledData = $this->handling($completedData);
+            $handledData = HandlingHelper::after($handledData);
 
             if (Helper::isReturning($handledData)) {
                 return $handledData;
             }
 
             $db2outData = $this->mappingDb2output($handledData);
-            // $db2outData = LoginIo::egOutputData(); // for demo
             $result = $this->completeResult($db2outData);
+            
             return $result;
         }
     }
@@ -63,7 +67,7 @@ class Login implements ApiActionProcessing
      */
     public function inputValidate($input)
     {
-        return LoginIo::inputValidate($input); // for demo
+        return Io::inputValidate($input); // for demo
     }
 
     /**
@@ -87,7 +91,7 @@ class Login implements ApiActionProcessing
      */
     public function completeData($in2dbData)
     {
-        $in2dbData['updated_at'] = time();
+        // $in2dbData['updated_at'] = time();
 
         $in2dbData = ApiHelper::inputFilter($in2dbData); // You should comment it, when in search action.
 
@@ -102,6 +106,22 @@ class Login implements ApiActionProcessing
     public function handling($completedData)
     {
         $model = ApiAuthenticator::findByUsername($completedData['username']);
+
+        if (is_null($model)) {
+            return $result = [
+                'code' => ApiCodeMsg::NOT_FOUND,
+                'msg' => ApiCodeMsg::NOT_FOUND_MSG,
+                'data' => new \StdClass(),
+            ];
+        }
+
+        if ( !Yii::$app->security->validatePassword($completedData['password'], $model->password_hash) ) {
+            return $result = [
+                'code' => ApiCodeMsg::INPUT_LOGIC_VALIDATION_FAILED_MSG,
+                'msg' => 'Error in username or password',
+                'data' => new \StdClass(),
+            ];
+        }
 
         if (!ApiAuthenticator::apiTokenIsValid($model->api_token)) {
             $model->generateApiToken();
@@ -168,6 +188,6 @@ class Login implements ApiActionProcessing
      */
     public function egOutputData()
     {
-        return LoginIo::egOutputData(); // for demo
+        return Io::egOutputData(); // for demo
     }
 }

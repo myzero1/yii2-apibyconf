@@ -721,6 +721,7 @@ class ApiHelper
      **/
     public static function getModulePath($moduleId, $confJson=[])
     {
+        Yii::setAlias('@myzero1/apibyconf', '@vendor/myzero1/yii2-apibyconf/src'); // for myzero1 module
         $moduleClass = self::getModuleClass($moduleId, true);
         $moduleClassPath = Yii::getAlias(str_replace('\\', '/', '@'.$moduleClass)) . '.php';
         

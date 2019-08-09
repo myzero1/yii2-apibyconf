@@ -82,8 +82,8 @@ class JoinIo implements ApiIoProcessing
      */
     public static function egOutputData()
     {
-        $egOutputData = 'a:1:{s:8:"username";s:7:"myzero1";}';
+        $egOutputData = 'a:1:{s:9:"dataTitle";s:9:"dataValue";}';
 
-        return unserialize($egOutputData);
+        return ApiHelper::filterEgOutputData($egOutputData);
     }
 }

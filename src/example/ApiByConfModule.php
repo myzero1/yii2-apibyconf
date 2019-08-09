@@ -10,12 +10,16 @@ use myzero1\apibyconf\components\rest\ApiHelper;
 /**
  * example module definition class
  */
-class apibyconfModule extends BaseModule implements BootstrapInterface
+class ApiByConfModule extends BaseModule implements BootstrapInterface
 {
     /**
      * {@inheritdoc}
      */
     public $controllerNamespace = 'example\controllers';
+    public $docToken = 'docTokenAsMyzero1';
+    public $apiTokenExpire = 86400; // 24h
+    public $runningAsDocActions = ['*' => '*']; // all action
+    public $fixedUser = [ 'id' => 1, 'username' => 'myzero1',];
 
     /**
      * {@inheritdoc}
@@ -23,8 +27,8 @@ class apibyconfModule extends BaseModule implements BootstrapInterface
     public function bootstrap($app)
     {
         if ($app instanceof \yii\web\Application) {
-            Yii::$app->params['apibyconfAuthenticator_ab6446ae49cf579a847bfab947702375'] = 'httpBearerAuth';
-            Yii::$app->params['apibyconfUnAuthenticateActions_ab6446ae49cf579a847bfab947702375'] = [
+            Yii::$app->params['apibyconfAuthenticator_4c0122e47a06f9a82ddcecf3bd46264a'] = 'httpBearerAuth';
+            Yii::$app->params['apibyconfUnAuthenticateActions_4c0122e47a06f9a82ddcecf3bd46264a'] = [
                 'post /authenticator/login',
                 'post /authenticator/join',
             ];

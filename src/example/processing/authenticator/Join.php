@@ -13,10 +13,11 @@ use yii\base\DynamicModel;
 use yii\web\ServerErrorHttpException;
 use myzero1\apibyconf\components\rest\Helper;
 use myzero1\apibyconf\components\rest\ApiHelper;
+use myzero1\apibyconf\components\rest\HandlingHelper;
 use myzero1\apibyconf\components\rest\ApiCodeMsg;
 use myzero1\apibyconf\components\rest\ApiActionProcessing;
-use example\processing\authenticator\io\JoinIo;
 use myzero1\apibyconf\components\rest\ApiAuthenticator;
+use example\processing\authenticator\io\JoinIo as Io;
 
 /**
  * implement the ActionProcessing
@@ -45,15 +46,18 @@ class Join implements ApiActionProcessing
         } else {
             $in2dbData = $this->mappingInput2db($validatedInput);
             $completedData = $this->completeData($in2dbData);
+            
+            $completedData = HandlingHelper::before($completedData, Io::class);
             $handledData = $this->handling($completedData);
+            $handledData = HandlingHelper::after($handledData);
 
             if (Helper::isReturning($handledData)) {
                 return $handledData;
             }
 
             $db2outData = $this->mappingDb2output($handledData);
-            // $db2outData = JoinIo::egOutputData(); // for demo
             $result = $this->completeResult($db2outData);
+            
             return $result;
         }
     }
@@ -64,7 +68,7 @@ class Join implements ApiActionProcessing
      */
     public function inputValidate($input)
     {
-        $input = JoinIo::inputValidate($input); // for demo
+        $input = Io::inputValidate($input); // for demo
 
         if (ApiHelper::isReturning($input)) {
             return $input;
@@ -120,7 +124,7 @@ class Join implements ApiActionProcessing
      */
     public function completeData($in2dbData)
     {
-        $in2dbData['created_at'] = $in2dbData['updated_at'] = time();
+        // $in2dbData['updated_at'] = time();
 
         $in2dbData = ApiHelper::inputFilter($in2dbData); // You should comment it, when in search action.
 
@@ -202,6 +206,6 @@ class Join implements ApiActionProcessing
      */
     public function egOutputData()
     {
-        return JoinIo::egOutputData(); // for demo
+        return Io::egOutputData(); // for demo
     }
 }
