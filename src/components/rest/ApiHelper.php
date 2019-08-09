@@ -722,8 +722,6 @@ class ApiHelper
     public static function getModulePath($moduleId, $confJson=[])
     {
         $moduleClass = self::getModuleClass($moduleId, true);
-
-        $moduleClass = self::getModuleClass($moduleId, true);
         $moduleClassPath = Yii::getAlias(str_replace('\\', '/', '@'.$moduleClass)) . '.php';
         
         if (is_file($moduleClassPath)) {

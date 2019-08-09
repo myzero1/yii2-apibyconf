@@ -287,9 +287,12 @@ EOD;
 //        $modulePath = $this->getModulePath();
         $modulePath = ApiHelper::getModulePath($this->moduleID, 
                 json_decode($this->conf, true)['json']);
-
+        // $files[] = new CodeFile(
+        //     $modulePath . '/' . StringHelper::basename($this->moduleClass) . '.php',
+        //     $this->render("module.php")
+        // );
         $files[] = new CodeFile(
-            $modulePath . '/' . StringHelper::basename($this->moduleClass) . '.php',
+            $modulePath . '/ApiByConfModule.php',
             $this->render("module.php")
         );
         $files[] = new CodeFile(
